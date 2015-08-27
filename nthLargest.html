@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>nth largest number of an integer array</title>
+</head>
+<body>
+	<h1>Nth largest number of an integer array</h1>
+	<h3>Write code to find the nth largest element in an Integer Array. Example: Input = {5,2,4,7,1} and n = 2, then Output = 5.</h3>
+	<p>Integer array: [5,2,4,7,1], 2nd largest integer</p>
+	<P>Pseudo code in English- </p>
+	<ol>
+		<li>Make sure array is not empty</li>
+		<li>Make sure nth number is valid number.</li>
+		<li>Make sure nth number is equal or less than the length of the array.</li>
+		<li>Retrieve the nth largest number getting the arrays[length - nth].</li>		
+	</ol>
+	<p>Code in language: JavaScript</p>
+	<p>The code result: <span id="result"></span></p>
+	
+<script>
+	/* -------------------------------------------------------------------------
+		find nth largest element of an array
+	--------------------------------------------------------------------------*/	
+		function nLargest(array, nth) {
+			var arrays = array.sort(),  // sort array 
+					len = arrays.length;
+			
+			// check to make sure arrays is defined and not empty		
+			if (arrays === undefined || arrays.length === 0) {
+				return "Need to provide a valid integer array with more than " + nth + " elements.";
+			}
+			
+			// check to make sure the nth parameter is entered
+			if (!nth) {
+				return "Need to provide a valid nth largest element which is equal or smaller than " + len;
+			}
+			
+			if (isNaN(nth)) {
+				return "Need to provide a valid nth largest element as an integer. ";
+			}
+			
+			if (nth >= len) {
+				return "nth value is greater than the length of the input, try again.";
+			}
+			
+			return arrays[len - nth];
+		}
+		
+		var input = [5,2,4,7,1];
+		document.querySelector("#result").innerHTML = nLargest([5,2,4,7,1], 2);
+		console.log("nLargest([5,2,4,7,1], 'a'):", nLargest([5,2,4,7,1], 'a'));
+		console.log("nLargest([5,2,4,7,1], 2):", nLargest([5,2,4,7,1], 2));
+		console.log("nLargest([5,2,4,7,1]):", nLargest([5,2,4,7,1]));
+		console.log("nLargest([], 2):", nLargest([], 2));
+</script>
+</body>
+</html>
